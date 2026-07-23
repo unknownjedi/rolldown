@@ -23,8 +23,8 @@ init_entry();
 ## entry2.js
 
 ```js
-import { n as __exportAll, t as __esmMin } from "./rolldown-runtime.js";
 import assert from "node:assert";
+// HIDDEN [\0rolldown/runtime.js]
 //#region lib.js
 var lib_exports = /* @__PURE__ */ __exportAll({ a: () => 123 });
 //#endregion
@@ -39,14 +39,6 @@ function init_entry() {
 }
 //#endregion
 export { init_entry as t };
-
-```
-
-## rolldown-runtime.js
-
-```js
-// HIDDEN [\0rolldown/runtime.js]
-export { __exportAll as n, __esmMin as t };
 
 ```
 
@@ -254,8 +246,15 @@ init_entry();
 ### entry2.js
 
 ```js
-import { t as __esmMin } from "./rolldown-runtime.js";
 import assert from "node:assert";
+var __esmMin = (fn, res, err) => () => {
+	if (err) throw err[0];
+	try {
+		return fn && (res = fn(fn = 0)), res;
+	} catch (e) {
+		throw err = [e], e;
+	}
+};
 var a;
 function init_lib() {
 	return (init_lib = __esmMin((() => {
@@ -284,13 +283,5 @@ export { a as n, init_lib as r, init_entry as t };
 import { n as a, r as init_lib } from "./entry2.js";
 init_lib();
 export { a };
-
-```
-
-### rolldown-runtime.js
-
-```js
-// HIDDEN [\0rolldown/runtime.js]
-export { __exportAll as n, __esmMin as t };
 
 ```

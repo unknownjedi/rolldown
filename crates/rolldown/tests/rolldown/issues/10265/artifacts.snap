@@ -15,7 +15,15 @@ export { result };
 ## main2.js
 
 ```js
-import { t as __esmMin } from "./rolldown-runtime.js";
+var __esmMin = (fn, res, err) => () => {
+	if (err) throw err[0];
+	try {
+		return fn && (res = fn(fn = 0)), res;
+	} catch (e) {
+		throw err = [e], e;
+	}
+};
+//#endregion
 //#region b.js
 function getB() {
 	return getA ? "b" : "unreachable";
@@ -48,14 +56,6 @@ function init_main() {
 }
 //#endregion
 export { result as n, init_main as t };
-
-```
-
-## rolldown-runtime.js
-
-```js
-// HIDDEN [\0rolldown/runtime.js]
-export { __exportAll as n, __esmMin as t };
 
 ```
 
